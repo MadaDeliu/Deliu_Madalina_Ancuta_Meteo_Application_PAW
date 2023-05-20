@@ -19,7 +19,7 @@ namespace MeteoApplicationMVC.Data
         public DbSet<FavoriteLocation> FavoriteLocations { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Alert> Alerts { get; set; }
-        public DbSet<SevereWeatherEvent> SevereWeatherEvents { get; set; }
+        public DbSet<News> SevereWeatherEvents { get; set; }
         public DbSet<Meteorologist> Meteorologists { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace MeteoApplicationMVC.Data
                 .HasForeignKey(w => w.StationId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<SevereWeatherEvent>()
+            modelBuilder.Entity<News>()
                 .HasOne(e => e.City)
                 .WithMany(c => c.SevereWeatherEvents)
                 .HasForeignKey(e => e.CityId)

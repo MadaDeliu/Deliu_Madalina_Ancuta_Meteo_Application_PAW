@@ -2,195 +2,84 @@
 @model LoginModel
 
 
+<h1>@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                
-                <hr />
-                <head>
-                    <style>
-                        #login {
-                            margin: 0;
-                            color: #6a6f8c;
-                            background: #222;
-                            background-image: url('https://source.unsplash.com/1600x900/?landscape');
-                            font: 600 16px/18px 'Open Sans', sans-serif;
-                            height: 100vh;
-                            
-                        }
+        <style>
+            .login-wrap {
+                top: 40px;
+                width: 100%;
+                margin: auto;
+                max-width: 525px;
+                min-height: 600px;
+                position: relative;
+                background: rgba(40, 57, 101, .9);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+                margin-left:450px;
+            }
 
-                        *,
-                        :after,
-                        :before {
-                            box-sizing: border-box
-                        }
+            .login-html {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                padding: 90px 70px 50px 70px;
+                color:white;
+                margin-top:5px;
+            }
 
-                        .clearfix:after,
-                        .clearfix:before {
-                            content: '';
-                            display: table
-                        }
+			body{
+                margin: 0;
+                color: #6a6f8c;
+                background: #222;
+                background-image: url('https://source.unsplash.com/1600x900/?landscape');
+                font: 600 16px/18px 'Open Sans', sans-serif;
+                height: 100vh;
+            }
 
-                        .clearfix:after {
-                            clear: both;
-                            display: block
-                        }
+            .btn-primary{
+                margin-left: 10px;
+            }
 
-                        a {
-                            color: inherit;
-                            text-decoration: none
-                        }
+            #login-submit{
+                text-align: center;
+                position: relative;
+                top: 150px;
+            }
 
-                        .login-wrap {
-                            top: 40px;
-                            width: 100%;
-                            margin: auto;
-                            max-width: 525px;
-                            min-height: 670px;
-                            position: relative;
-                            background: #222;
-                            background-image: url('https://source.unsplash.com/1600x900/?landscape');
-                            background-attachment: fixed;
-                            background-repeat: no-repeat;
-                            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
-                            margin-left: 400px;
-                           
-                        }
-
-                        .login-html {
-                           
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            padding: 90px 70px 50px 70px;
-                            background: rgba(40, 57, 101, .9);
-                        }
-
-
-
-                            .login-html .tab,
-                            .login-form .group .label,
-                            .login-form .group .button {
-                                text-transform: uppercase;
-                            }
-
-                        .title {
-                            color: #ffffff;
-                        }
-
-
-
-                        .login-form {
-                            top: 20px;
-                            min-height: 340px;
-                            position: relative;
-                            perspective: 1000px;
-                            transform-style: preserve-3d;
-                        }
-
-                            .login-form .group .form-floating {
-                                margin-bottom: 15px;
-                            }
-
-                                .login-form .group .label,
-                                .login-form .group .input,
-                                .login-form .group .button
-                            .login-form .form-floating {
-                                    width: 100%;
-                                    color: #fff;
-                                    display: block;
-                                }
-
-                                .login-form .group .input,
-                                .login-form .group .button
-                             {
-                                    border: none;
-                                    padding: 15px 20px;
-                                    border-radius: 25px;
-                                    background: rgba(255, 255, 255, .1);
-                                }
-
-                                .login-form .group input[data-type="password"] {
-                                    -webkit-text-security: circle;
-                                }
-
-                                .login-form .group .label {
-                                    color: #aaa;
-                                    font-size: 12px;
-                                }
-
-                           
-
-                        .btn {
-                            border-radius: 100px;
-                            border: 1px solid #8f0808;
-                            background-color: #8f0808;
-                            color: #ffffff;
-                            font-size: 16px;
-                            font-weight: bold;
-                            padding: 14px 42px;
-                            letter-spacing: 1px;
-                            text-transform: uppercase;
-                            cursor: pointer;
-                        }
-
-                        .button-container-div {
-                            text-align: center;
-                            position: relative;
-                            top: 50px;
-                        }
-
-                        .btn-primary {
-                            margin-left: 500px;
-                        }
-
-                        
-
-                        .go-signup {
-                            color: #ffffff;
-                            top: 130px;
-                            position: relative;
-                            text-align: center;
-                            text-decoration: underline;
-                            font-size: 14px;
-                            opacity: 60%;
-                        }
-
-                    </style>
-                    <title>Sign In</title>
-                </head>
-                <body id="login">
-                    <div class="login-wrap">
-                        <div class="login-html">
-                            <div class="title">
-                                <h1>Sign In</h1>
-                            </div>
-                            <div class="login-form">
-                                <div>
-                                    <div class="form-floating">
-                                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                                        <label asp-for="Input.Email" class="form-label"></label>
-                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-floating">
-                                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                                        <label asp-for="Input.Password" class="form-label"></label>
-                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                    </div>
-                                    <div class="button-container-div">
-                                        <a href="../../home/HomePage.html">
-                                            <button class="btn">Sign In</button>
-                                        </a>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
+            
+        </style>
+        <div id="login">
+            <div class="login-wrap">
+                <div class="login-html">
+                    <div class="title">
+                        <h1>Sign In</h1>
                     </div>
-                </body>
-            </form>
-        </section>
+					<form method="post">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="login-form">
+						<input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+						<label asp-for="Input.Email" class="form-label"></label>
+						<span asp-validation-for="Input.Email" class="text-danger"></span>
+					 </div>
+					<div class="login-form">
+						<input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+						<label asp-for="Input.Password" class="form-label"></label>
+						<span asp-validation-for="Input.Password" class="text-danger"></span>
+					</div>
+					<div>
+						<button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+					</div>
+					<div>
+						<p>
+							<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+						</p>
+					 </div>
+				     </form>
+                </div>
+             </div>
+        </div>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
@@ -200,8 +89,10 @@
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                article
+                                about setting up this ASP.NET application to support logging in via external services
+                            </a>.
                         </p>
                     </div>
                 }
@@ -210,7 +101,7 @@
                     <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                         <div>
                             <p>
-                                @foreach (var provider in Model.ExternalLogins!)
+                                @foreach (var provider in Model.ExternalLogins)
                                 {
                                     <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }

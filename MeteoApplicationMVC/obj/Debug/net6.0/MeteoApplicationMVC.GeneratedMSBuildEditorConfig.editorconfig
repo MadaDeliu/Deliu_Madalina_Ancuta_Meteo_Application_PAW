@@ -176,6 +176,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/AboutUs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/AboutUs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/AboutUs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/AboutUs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/AboutUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Alerts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -284,48 +304,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Meteorologists/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0ZW9yb2xvZ2lzdHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Meteorologists/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0ZW9yb2xvZ2lzdHNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Meteorologists/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0ZW9yb2xvZ2lzdHNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Meteorologists/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0ZW9yb2xvZ2lzdHNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Meteorologists/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0ZW9yb2xvZ2lzdHNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/NewContact/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3Q29udGFjdFxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/SevereWeatherEvents/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V2ZXJlV2VhdGhlckV2ZW50c1xDcmVhdGUuY3NodG1s
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/News/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/SevereWeatherEvents/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V2ZXJlV2VhdGhlckV2ZW50c1xEZWxldGUuY3NodG1s
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/News/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/SevereWeatherEvents/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V2ZXJlV2VhdGhlckV2ZW50c1xEZXRhaWxzLmNzaHRtbA==
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/News/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/SevereWeatherEvents/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V2ZXJlV2VhdGhlckV2ZW50c1xFZGl0LmNzaHRtbA==
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/News/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/SevereWeatherEvents/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V2ZXJlV2VhdGhlckV2ZW50c1xJbmRleC5jc2h0bWw=
+[D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/An3_sem2/Proiectarea Ap. Web/MeteoApplicationMVC/MeteoApplicationMVC/Views/Shared/Error.cshtml]

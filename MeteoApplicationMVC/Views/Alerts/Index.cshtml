@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -62,4 +62,148 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+    <head>
+        <style>
+            
+           
+            /* Stilul sectiunilor cu alerte */
+        .mySection {
+                margin-top: 50px;
+                margin-left:0px;
+                margin-right:0px;
+                padding: 20px;
+                background-color:rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                box-shadow:rgba(0, 0, 0, 0.2);
+                backdrop-filter: blur(20.5px);
+                color:azure;
+                
+            }
+
+            /* Stilul titlurilor sectiunilor */
+            h2 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 3px;
+            }
+
+            /* Stilul elementelor de alerta */
+            li {
+                margin-bottom: 15px;
+            }
+
+            #ul1 {
+                margin: 10px;
+                color: red;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 3px;
+            }
+
+            /* Stilul textului de alerta */
+            p {
+                margin: 0;
+                line-height: 1.5;
+                height: 12px;
+                margin: 10px;
+            }
+
+            /* Stilul titlului principal */
+            h1 {
+                font-size: 36px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            /* Stilul coloanelor laterale */
+            .col-md-4 {
+                margin-top: 20px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .mainClass {
+                background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701350594.jpg');
+                background-size: cover;
+                font-size: 100%;
+                height: 92vh;
+                margin-left: 0px;
+                margin-right: 0px;
+                font-family: "Open Sans", sans-serif;
+            height: 100%; 
+            }
+        </style>
+    </head>
+    
+    <body class="mainClass">
+        <section class="mySection">
+            <h1>Current Alerts</h1>
+            <ul>
+                <li>
+                    <h3>Heavy rain warning</h3>
+                    <p>Affected area: Bucharest</p>
+                    <p>Interval: May 10, 2:00 PM - May 11, 12:00 PM</p>
+                </li>
+                <li>
+                    <h3>Strong wind warning</h3>
+                    <p>Affected area: Constanta</p>
+                    <p>Interval: May 20, 6:00 PM - May 21, 6:00 AM</p>
+                </li>
+            </ul>
+        </section>
+    <section class="mySection">
+            <h1>Upcoming Alerts</h1>
+            <ul>
+                <li>
+                    <h3>Strong wind warning</h3>
+                    <p>Affected area: Timisoara</p>
+                    <p>Interval: May 1, 3:00 PM - May 1, 6:00 PM</p>
+                </li>
+                <li>
+                    <h3>Heat wave warning</h3>
+                    <p>Affected area: Bucharest</p>
+                    <p>Interval: June 15, 12:00 PM - June 17, 6:00 PM</p>
+                </li>
+                <li>
+                    <h3>Cold front warning</h3>
+                    <p>Affected area: Brasov</p>
+                    <p>Interval: November 1, 6:00 AM - November 2, 12:00 PM</p>
+                </li>
+            </ul>
+        </section >
+
+    <section class="mySection">
+            <h1>Weather Alerts</h1>
+            <p>Here are the weather alerts for your area:</p>
+            <ul>
+                <li>Thunderstorm alert, valid until 8:00 PM</li>
+                <li>Heavy rain warning, valid until 6:00 PM</li>
+                <li>Strong wind warning, valid until 10:00 PM</li>
+            </ul>
+            <div class="col-md-4">
+                <h3>Other Useful Resources</h3>
+                <ul id="ul1">
+                    <li>
+                        <a href="https://www.cdc.gov/disasters/hurricanes/before.html">
+                            Information on how to prepare for a storm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://ro.usembassy.gov/u-s-citizen-services/additional-resources-for-u-s-citizens/emergency-assistance/">List of emergency numbers</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </body>
+

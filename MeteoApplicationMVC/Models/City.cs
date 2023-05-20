@@ -12,6 +12,6 @@ namespace MeteoApplicationMVC.Models
         public ICollection<FavoriteLocation>? FavoriteLocations { get; set; }
         public ICollection<Alert>? Alerts { get; set; }
 
-        public ICollection<SevereWeatherEvent>? SevereWeatherEvents { get; set; }
+        public ICollection<News>? SevereWeatherEvents { get; set; }
     }
 }

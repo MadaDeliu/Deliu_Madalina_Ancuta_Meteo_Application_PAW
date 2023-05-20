@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -39,3 +39,348 @@
 }
     </tbody>
 </table>
+*@
+
+<html>
+
+
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color:gainsboro;
+    }
+
+    .map-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    #map1,
+    #map2 {
+        flex: 1;
+        height: 80%;
+        margin-bottom:10px;
+    }
+    </style>
+
+<body>
+    <div class="map-container">
+    <div id="map1">
+        <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+        <script>
+            // Definim stilurile de culori pentru harta
+            var temperatureColors = [
+                "#FFFFFF",
+                "#F7FCF5",
+                "#E5F5E0",
+                "#C7E9C0",
+                "#A1D99B",
+                "#74C476",
+                "#41AB5D",
+                "#238B45",
+                "#006D2C",
+                "#00441B",
+            ];
+
+            var romaniaExtent = [19.162, 43.448, 29.716, 48.256]; // [vest, sud, est, nord]
+
+            // Initializam harta
+            var map1 = new ol.Map({
+                target: "map1",
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM(),
+                    }),
+                    new ol.layer.Vector({
+                        source: vectorSource,
+                        style: function (feature) {
+                            var temperature = feature.getProperties().temperature;
+                            console.log('Temperature:', temperature); // Adăugare console.log()
+                            var index = Math.round(temperature);
+                            index = Math.max(0, Math.min(index, temperatureColors.length - 1));
+                            var color = temperatureColors[index];
+                            return new ol.style.Style({
+                                image: new ol.style.Circle({
+                                    fill: new ol.style.Fill({
+                                        color: color,
+                                    }),
+                                    radius: 10,
+                                    stroke: new ol.style.Stroke({
+                                        color: "white",
+                                        width: 2,
+                                    }),
+                                }),
+                                text: new ol.style.Text({
+                                    font: "12px Calibri,sans-serif",
+                                    text: feature.get("name") + " " + feature.get("temperature") + " °C",
+                                    offsetY: -12,
+                                    stroke: new ol.style.Stroke({
+                                        color: "white",
+                                        width: 3,
+                                    }),
+                                }),
+                            });
+                        },
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([25, 46]), // Centrul este setat la coordonatele [25, 46]
+                    zoom: -50, // Setează nivelul de zoom la 6
+                    extent: ol.proj.transformExtent(romaniaExtent, 'EPSG:4326', 'EPSG:3857') // Setează extinderea hărții la cea din România
+                }),
+            });
+
+            // Definim un vector source si un vector layer pentru datele meteorologice
+            var vectorSource = new ol.source.Vector({
+                format: new ol.format.GeoJSON(),
+            });
+
+            var vectorLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+
+            // Obtinem date
+            // meteorologice pentru celelalte orase si le adaugam pe harta
+            var cities = ["Bacau", "Galati", "Cluj-Napoca", "Botosani", "Satu Mare", "Bucharest", "Craiova", "Timisoara", "Constanta", "Iasi", "Sibiu", "Oradea"];
+            var promises = [];
+
+            cities.forEach(function (city) {
+                var url =
+                    "https://api.openweathermap.org/data/2.5/weather?q=" +
+                    city +
+                    "&units=metric&appid=" +
+                    "6636393f1749253a5bf8f4cd83303d50";
+                if (promises) {
+                    promises.push(fetch(url).then(function (response) {
+                        return response.json();
+                    }));
+                }
+
+            });
+
+            Promise.all(promises)
+                .then(function (data) {
+                    console.log(data);
+                    var features = [];
+                    for (var i = 0; i < data.length; i++) {
+                        var cityData = data[i];
+                        if (!cityData || !cityData.weather) {
+                            console.error("Datele nu contin informatii despre vreme pentru orasul " + cities[i] + ".");
+                            continue;
+                        }
+                        var temp = cityData.main.temp.toFixed(1);
+                        var lat = cityData.coord.lat;
+                        var lon = cityData.coord.lon;
+                        var color = "#3388ff";
+                        if (temp > 0) {
+                            color = "#ff3333";
+                        }
+                        var marker = new ol.Feature({
+                            geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])),
+                            name: cities[i],
+                            temperature: temp,
+                        });
+                        marker.setStyle(
+                            new ol.style.Style({
+                                image: new ol.style.Circle({
+                                    fill: new ol.style.Fill({
+                                        color: color,
+                                    }),
+                                    radius: 10,
+                                    stroke: new ol.style.Stroke({
+                                        color: "white",
+                                        width: 2,
+                                    }),
+                                }),
+                                text: new ol.style.Text({
+                                    font: "bold 16px Calibri,sans-serif",
+                                    fontWeight: 'bold',
+                                    text: marker.get("name") + " " + marker.get("temperature") + " °C",
+                                    offsetY: -15,
+                                    fill: new ol.style.Fill({
+                                        color: "black",
+                                    }),
+                                }),
+                            })
+                        );
+                        features.push(marker);
+                    }
+                    vectorSource.addFeatures(features);
+                    map1.addLayer(vectorLayer); // adauga stratul la harta
+
+
+                    map1.getView().fit(vectorSource.getExtent());
+
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        </script>
+    </div>
+    <div id="map2">
+        <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+        <script>
+            // Definim stilurile de culori pentru harta
+            var temperatureColors = [
+                "#FFFFFF",
+                "#F7FCF5",
+                "#E5F5E0",
+                "#C7E9C0",
+                "#A1D99B",
+                "#74C476",
+                "#41AB5D",
+                "#238B45",
+                "#006D2C",
+                "#00441B",
+            ];
+
+
+
+            // Initializam harta
+            var map2 = new ol.Map({
+                target: "map2",
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM(),
+                    }),
+                    new ol.layer.Vector({
+                        source: vectorSource,
+                        style: function (feature) {
+                            var temperature = feature.getProperties().temperature;
+                            console.log('Temperature:', temperature); // Adăugare console.log()
+                            var index = Math.round(temperature);
+                            index = Math.max(0, Math.min(index, temperatureColors.length - 1));
+                            var color = temperatureColors[index];
+                            return new ol.style.Style({
+                                image: new ol.style.Circle({
+                                    fill: new ol.style.Fill({
+                                        color: color,
+                                    }),
+                                    radius: 10,
+                                    stroke: new ol.style.Stroke({
+                                        color: "white",
+                                        width: 2,
+                                    }),
+                                }),
+                                text: new ol.style.Text({
+                                    font: "12px Calibri,sans-serif",
+                                    text: feature.get("name") + " " + feature.get("temperature") + " °C",
+                                    offsetY: -12,
+                                    stroke: new ol.style.Stroke({
+                                        color: "white",
+                                        width: 3,
+                                    }),
+                                }),
+                            });
+                        },
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([25, 46]), // Centrul este setat la coordonatele [25, 46]
+                    zoom: 6, // Setează nivelul de zoom la 6
+
+                }),
+            });
+
+            // Definim un vector source si un vector layer pentru datele meteorologice
+            var vectorSource2 = new ol.source.Vector({
+                format: new ol.format.GeoJSON(),
+            });
+
+            var vectorLayer2 = new ol.layer.Vector({
+                source: vectorSource2
+            });
+
+            // Obtinem date
+            // meteorologice pentru celelalte orase si le adaugam pe harta
+            const cities2 = ["Warszawa", "Vilnius", "Helsinki", "Stockholm", "Hamburg", "Bruxelles", "Wien", " Rennes", "Toulouse", "Paris", "Prague", "Bucharest", "Madrid", "Oslo", "Moscow", "Milan", "Lisbon", "Berlin", "London", "Athens"];
+            const filteredCities2 = [];
+
+            for (let city2 of cities2) {
+                if (!cities.includes(city2)) {
+                    filteredCities2.push(city2);
+                }
+            }
+            var promises2 = [];
+
+            filteredCities2.forEach(function (city2) {
+                var url =
+                    "https://api.openweathermap.org/data/2.5/weather?q=" +
+                    city2 +
+                    "&units=metric&appid=" +
+                    "6636393f1749253a5bf8f4cd83303d50";
+                if (promises2) {
+                    promises2.push(fetch(url).then(function (response2) {
+                        return response2.json();
+                    }));
+                }
+
+            });
+
+
+
+            Promise.all(promises2)
+                .then(function (data2) {
+                    console.log(data2);
+                    var features2 = [];
+                    for (var i = 0; i < data2.length; i++) {
+                        var cityData2 = data2[i];
+                        if (!cityData2 || !cityData2.weather) {
+                            console.error("Datele nu contin informatii despre vreme pentru orasul " + filteredCities2[i] + ".");
+                            continue;
+                        }
+                        var temp2 = cityData2.main.temp.toFixed(1);
+                        var lat2 = cityData2.coord.lat;
+                        var lon2 = cityData2.coord.lon;
+                        var color2 = "#3388ff";
+                        if (temp2 > 0) {
+                            color2 = "#ff3333";
+                        }
+                        var marker2 = new ol.Feature({
+                            geometry: new ol.geom.Point(ol.proj.fromLonLat([lon2, lat2])),
+                            name: filteredCities2[i],
+                            temperature: temp2,
+                        });
+                        marker2.setStyle(
+                            new ol.style.Style({
+                                image: new ol.style.Circle({
+                                    fill: new ol.style.Fill({
+                                        color: color2,
+                                    }),
+                                    radius: 10,
+                                    stroke: new ol.style.Stroke({
+                                        color: "white",
+                                        width: 2,
+                                    }),
+                                }),
+                                text: new ol.style.Text({
+                                    font: "bold 16px Calibri,sans-serif",
+                                    fontWeight: 'bold',
+                                    text: marker2.get("name") + " " + marker2.get("temperature") + " °C",
+                                    offsetY: -15,
+                                    fill: new ol.style.Fill({
+                                        color: "black",
+                                    }),
+                                }),
+                            })
+                        );
+                        features2.push(marker2);
+                    }
+                    vectorSource2.addFeatures(features2);
+                    map2.addLayer(vectorLayer2); // adauga stratul la harta
+
+
+                    map2.getView().fit(vectorSource2.getExtent());
+
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        </script>
+    </div>
+    </div>
+</body>
+</html>

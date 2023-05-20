@@ -11,7 +11,7 @@ namespace MeteoApplicationMVC.Repositories
         private IRepositoryContact? _contactRepository;
         private IRepositoryFavoriteLocation? _favoriteLocationRepository;
         private IRepositoryMeteorologist? _meteorologistRepository;
-        private IRepositorySevereWeatherEvents? _severeWeatherEventsRepository;
+        private IRepositoryNews? _severeWeatherEventsRepository;
         private IRepositoryStation? _stationRepository;
         private IRepositoryUser? _userRepository;
         private IRepositoryWeatherData? _weatherDataRepository;
@@ -76,13 +76,13 @@ namespace MeteoApplicationMVC.Repositories
             }
         }
 
-        public IRepositorySevereWeatherEvents RepositorySevereWeatherEvents
+        public IRepositoryNews RepositorySevereWeatherEvents
         {
             get
             {
                 if (_severeWeatherEventsRepository == null)
                 {
-                    _severeWeatherEventsRepository = new RepositorySevereWeatherEvents(_applicationDbContext);
+                    _severeWeatherEventsRepository = new RepositoryNews(_applicationDbContext);
                 }
                 return _severeWeatherEventsRepository;
             }

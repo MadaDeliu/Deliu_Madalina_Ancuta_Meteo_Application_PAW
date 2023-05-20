@@ -1,0 +1,294 @@
+﻿@model IEnumerable<MeteoApplicationMVC.Models.News>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Severity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Severity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
+<html lang="en">
+<head>
+    <style>
+        .topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: rgb(0, 0, 0);
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+header {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+}
+.news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.article {
+    max-width: 300px;
+    width: 48%;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: 50px;
+}
+
+    .article img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .article h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .article p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+.read-more {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .read-more:hover {
+        background-color: #0069d9;
+    }
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding: 32px;
+    min-height: calc(100vh - 150px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://images.unsplash.com/photo-1613828330596-982c62f72e9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+}
+ 
+
+
+
+.headline {
+    background-image: url("https://example.com/your-image.jpg");
+    background-size: cover;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 100px 0;
+}
+
+    .headline h1 {
+        color: black;
+        font-size: 3em;
+        margin-bottom: 20px;
+        animation: slideInUp 1s ease;
+    }
+
+    .headline p {
+        color:black;
+        font-size: 1.5em;
+        animation: fadeIn 1s ease 0.5s forwards;
+    }
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+        main {
+            flex-grow: 1;
+            margin-bottom: 50px; /* Adăugați o margine inferioară pentru a crea spațiu pentru footer */
+        }
+
+        .myFooter {
+            height: 20px; /* Reducerea înălțimii footerului */
+            /* Restul stilurilor */
+        }
+
+        .read-less {
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <section class="headline">
+        <h1>Latest Weather News</h1>
+        <p>Stay up-to-date with the latest weather news from around the world.</p>
+    </section>
+    <section class="news">
+        <article class="article" id="article1">
+            <img src="https://images.unsplash.com/photo-1521903146409-7165ad695b34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Q2hpY2FnbyUyMHdlYXRoZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="Chicago weather">
+            <h2>Chicago braces for snow, sleet and freezing rain</h2>
+            <p>Chicago and other parts of the Midwest are bracing for a weekend of snow, sleet and freezing rain as a major storm system moves across the region. The National Weather Service has issued winter storm warnings and watches for several states, including Illinois, Wisconsin, and Michigan.</p>
+            <a href="https://www.nbcchicago.com/weather/freeze-warning-issued-for-some-as-chicago-area-braces-for-roller-coaster-weather-week/3120915/">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1591497108596-436c1a1a5c8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHRvcm5hZG98ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="Severe weather in the South">
+            <h2>Severe weather slams the South, leaving destruction in its wake</h2>
+            <p>A tornado outbreak and other severe weather slammed the South over the weekend, leaving at least five people dead and dozens more injured. The storm system brought strong winds, heavy rain, and large hail to several states, including Mississippi, Georgia, and Alabama.</p>
+            <a href="https://edition.cnn.com/2023/03/25/weather/us-severe-storms-saturday/index.html">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1583459094467-e0db130c0dea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8dGh1bmRlcnN0b3JtfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Thunderstorm approaching city skyline">
+            <h2>Thunderstorm approaching city skyline</h2>
+            <p>A massive thunderstorm is heading towards the city, with forecasters warning of strong winds, heavy rain, and the possibility of flash flooding. Residents are being advised to stay indoors and avoid driving if possible.</p>
+            <a href="https://www.noaa.gov/jetstream/thunderstorms/flood">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1510300101842-d7a2ed0bde3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGxpZ2h0aW5nJTIwc3RyaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Lightning strike">
+            <h2>Lightning strike causes power outages across town</h2>
+            <p>A lightning strike during last night's storm caused widespread power outages across the town. Crews are working to restore power as quickly as possible, but some residents may be without electricity for several hours.</p>
+            <a href="https://edition.cnn.com/2019/09/08/us/washington-state-lightning-strikes/index.html">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1553709718-3226928c750c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c3VubnklMjBiZWFjaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Sunny beach">
+            <h2>Summer is Coming: Best Beaches to Visit</h2>
+            <p>As the weather warms up, it's time to start planning your next beach vacation. Whether you're looking for a secluded cove or a bustling boardwalk, we've rounded up the best beaches to visit this summer. From the crystal-clear waters of the Caribbean to the rugged coastline of the Pacific Northwest, there's something for everyone.</p>
+            <a href="https://gretastravels.com/10-top-beach-this-summer/">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1674501679701-08c3ec0d463e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFpbmJvdyUyMG92ZXIlMjB0aGUlMjBjaXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Rainbow over city">
+            <h2>Happy Weather: Stunning Photos of Rainbows</h2>
+            <p>There's nothing quite like the sight of a rainbow to lift your spirits on a dreary day. Whether it's a single arc or a full double rainbow, these colorful displays of light are a reminder of the beauty of nature. Check out these stunning photos of rainbows from around the world.</p>
+            <a href="https://www.nationalgeographic.co.uk/environment-and-conservation/2022/11/more-rainbows-are-in-our-future-and-thats-a-bad-omen">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1610741083757-1ae88e1a17f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFpbnklMjBkYXl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="Rainy day">
+            <h2>How to make the most of a rainy day</h2>
+            <p>Don't let a rainy day get you down! With the right mindset and activities, you can turn a dreary day into a fun and productive one. From reading a good book to making a cozy fort, there are plenty of ways to enjoy the rain indoors. And if you're feeling adventurous, why not put on your raincoat and boots and go for a walk in the rain? Just make sure to stay safe and dry!</p>
+            <a href="https://www.sociomix.com/diaries/entertainment/10-fun-and-relaxing-activities-for-a-rainy-day-without-your-phone/1628526511">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+        <article class="article">
+            <img src="https://images.unsplash.com/photo-1666977520357-a0cf80738d77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG90JTIwZGF5c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Hot temperatures">
+            <h2>Heat wave hits the city, stay cool with these tips</h2>
+            <p>As temperatures soar, it's important to take care of yourself and stay cool. Make sure to stay hydrated by drinking plenty of water, and avoid being outside during the hottest parts of the day. If you don't have air conditioning at home, try using a fan or heading to a public place with AC, such as a library or mall. And don't forget to wear lightweight, breathable clothing to help regulate your body temperature. With these tips, you'll be able to beat the heat and stay comfortable even on the hottest days!</p>
+            <a href="https://www.cbsnews.com/news/heat-wave-high-temperatures-safety-heat-stroke-exhaustion/">
+                <button class="read-more">Read more</button>
+            </a>
+        </article>
+
+    </section>
+    
+</body>
+</html>

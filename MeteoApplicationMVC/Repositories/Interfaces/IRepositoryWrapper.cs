@@ -7,7 +7,7 @@
         IRepositoryContact RepositoryContact { get; }
         IRepositoryFavoriteLocation RepositoryFavoriteLocation { get; }
         IRepositoryMeteorologist RepositoryMeteorologist { get; }
-        IRepositorySevereWeatherEvents RepositorySevereWeatherEvents { get; }
+        IRepositoryNews RepositorySevereWeatherEvents { get; }
         IRepositoryStation RepositoryStation { get; }
         IRepositoryUser RepositoryUser { get; }
         IRepositoryWeatherData RepositoryWeatherData { get; }

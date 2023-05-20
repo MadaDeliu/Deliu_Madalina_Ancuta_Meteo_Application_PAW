@@ -32,8 +32,8 @@ builder.Services.AddScoped<IServiceFavoriteLocation, ServiceFavoriteLocation>();
 builder.Services.AddScoped<IRepositoryMeteorologist, RepositoryMeteorologist>();
 builder.Services.AddScoped<IServiceMeteorologist, ServiceMeteorologist>();
 
-builder.Services.AddScoped<IRepositorySevereWeatherEvents, RepositorySevereWeatherEvents>();
-builder.Services.AddScoped<IServiceSevereWeatherEvents, ServiceSevereWeatherEvents>();
+builder.Services.AddScoped<IRepositoryNews, RepositoryNews>();
+builder.Services.AddScoped<IServiceNews, ServiceNews>();
 
 builder.Services.AddScoped<IRepositoryStation, RepositoryStation>();
 builder.Services.AddScoped<IServiceStation, ServiceStation>();

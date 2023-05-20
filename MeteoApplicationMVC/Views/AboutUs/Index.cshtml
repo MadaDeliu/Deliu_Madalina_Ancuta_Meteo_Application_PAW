@@ -1,0 +1,147 @@
+﻿@model IEnumerable<MeteoApplicationMVC.Models.Meteorologist>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Station)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Station.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@
+<head>
+    <style>
+    section {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    }
+
+    /* Stilul titlurilor sectiunilor */
+    h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    }
+
+    body {
+   
+    background-image: url('https://cdn.pixabay.com/photo/2022/10/03/21/47/fog-7496901_960_720.jpg');
+    margin: 0;
+    color: white;
+            background-size: cover;
+            font-size: 100%;
+            height: 92vh;
+            margin-left: 0px;
+            margin-right: 0px;
+            font-family: "Open Sans", sans-serif;
+            height: 100%;
+        }
+</style>
+</head>
+<body className="main" id="about">
+    <section id="eu">
+        <h1>About Us</h1>
+        <p class="lead">Welcome to our weather website!</p>
+        <p class="text">
+            Driven by passion for programming and meteorology, we aim to bring you the most accurate weather information. To achieve this, we rely on external APIs that provide us with real-time data on temperature, precipitation, wind, and much more. We strive to provide you with the most accurate and up-to-date information, so that you can be prepared for any weather conditions.
+        </p>
+        <p class="text">
+            Thank you for choosing us, and we hope you find our website useful and informative!
+        </p>
+    </section>
+    <section>
+        <p>
+            <h1>History</h1>
+            <details>
+                <summary>
+                    Weather is a condition of life and an environmental resource. Therefore, in one way or another, meteorology has been and remains a universal and permanent part of reality. The following are some historical landmarks significant to Romanian meteorology.
+                </summary>
+                <p>
+                    9-17 AD. The Roman poet Ovid, in his work "Tristae," describes some harsh winters in Dobrogea and the freezing of the sea on the shore of the Black Sea.
+                </p>
+                <p>
+                    1420-1845. The Brasov Chronicles make references to some remarkable meteorological phenomena.
+                </p>
+                <p>
+                    1640. Grigore Ureche publishes "Letopisetul Tarii Moldovei," in which he refers to the high waters of 1504: "over the summer there were heavy rains and floods of water, causing much drowning," and to the drought of 1585: "a great drought occurred in the country, drying up all the springs, valleys, and ponds, where fish were caught before, you could plow with a plow."
+                </p>
+                <p>
+                    1716. Dimitrie Cantemir elaborates "Descriptio Moldaviae," writing "About the settlement of Moldova, about its oldest and newest borders, and about the climate" as well as "About the waters of Moldova."
+                </p>
+                <p>
+                    1788. The work OBSERVAZIONI STORICHE NATURALI E POLITICHE INTORNI LA VALACHIA E MOLDOVIA is published in Naples, containing many meteorological and climatic references. 1840. Meteorology is taught as a science at the Vasiliana School in Iasi, using a manuscript in Greek taken from the library of the Metropolis. Meteorological observations - more or less systematic - are recorded in Iasi (since 1770), in Bucharest (since 1773), in Sibiu (since 1789), in Cluj (since 1833), in Sulina (since 1857), in Giurgiu (since 1863), in Timisoara (since 1874), in Galati and Braila (since 1878).
+                </p>
+                <p>
+                    1884. On July 18/30, the Meteorological Service of Romania is established under the leadership of Stefan Hepites, becoming one of the oldest scientific institutions in Romania. At the initiative of Stefan Hepites, Romania becomes one of the founding countries of the International Meteorological Organization. 1889. In addition to the Meteorological Service of Romania, the Weights and Measures Service is organized, and later a section of terrestrial magnetism and seismology. 1891. Stefan Hepites is elected a member of the International Meteorological Committee at the Conference in Munich. 1900. At the International Exhibition in Paris, the Meteorological Service of Romania receives the silver medal and the "Diploma of Honor."
+                </p>
+            </details>
+        </p>
+    </section>
+    <section>
+        <h1>Impact Studies</h1>
+        <p className="lead">
+            Areas influenced by climate variability and change:
+        </p>
+        <p className="text"></p>
+        <p className="text">Hydrology:</p>
+        <p className="text">
+            - current climate variability and change in the case of extreme precipitation generating rapid floods; analysis of hydrological drought climatic indices (Palmer hydrological drought index); climatic factors and predictability of the Danube flow.
+        </p>
+        <p>
+            - future projections of the components of the hydrological cycle based on: results of climate experiments conducted by the international scientific community, experiments carried out with a regional climate model adapted to the territory of Romania
+        </p>
+        <p className="text">Agriculture:</p>
+        - current climate analysis of the Palmer severity drought index; analysis of climatic potential evapotranspiration.
+        <p>
+            - future projections of climatic variables with an impact on agricultural activities.
+        </p>
+        <p className="text">
+            Emergency situations: risk maps for extreme phenomena whose statistics change as a result of climate change (e.g. heat waves, vegetation fires).
+        </p>
+    </section>
+
+
+</body>
