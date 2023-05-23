@@ -10,9 +10,10 @@
 <div class="row">
     <div class="col-md-6">
         <style>
-            .nav-link{
-                color:black;
+            .nav-link {
+                color: black;
             }
+
             body {
                 background: rgba(0, 0, 0, 0.30);
                 background-repeat: no-repeat;
@@ -21,16 +22,16 @@
             }
 
         </style>
-
-            <div class="container">
-                
-                        <h1>Nick Joe</h1>
-                        <p>Age: 30</p>
-                        <p>Location: New York</p>
-                        <p>Occupation: Web Developer</p>
-                    
-            </div>
-
+        <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+        <p>
+            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+        </p>
+        <form id="download-data" asp-page="DownloadPersonalData" method="post">
+            <button class="btn btn-primary" type="submit">Download</button>
+        </form>
+        <p>
+            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
+        </p>
     </div>
 </div>
 
